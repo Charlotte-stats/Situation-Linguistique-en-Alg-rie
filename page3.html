@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Enjeux contemporains — Le Français en Algérie</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #f5f0e8;
+      --ochre: #c8922a;
+      --navy: #1a2744;
+      --rust: #9b3a2a;
+      --sand: #e8dcc8;
+      --text: #2c2416;
+      --light-text: #6b5c44;
+      --teal: #1a5c52;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Source Serif 4', Georgia, serif;
+      background-color: var(--cream);
+      color: var(--text);
+      line-height: 1.7;
+    }
+    nav {
+      background: var(--navy);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 3px solid var(--ochre);
+    }
+    .nav-brand {
+      color: var(--cream);
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      padding: 1rem 0;
+    }
+    .nav-links { display: flex; list-style: none; }
+    .nav-links a {
+      display: block;
+      color: var(--sand);
+      text-decoration: none;
+      padding: 1.1rem 1.2rem;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 300;
+      transition: background 0.2s, color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active { background: var(--ochre); color: var(--navy); }
+ 
+    .page-header {
+      background: var(--teal);
+      color: var(--cream);
+      padding: 4rem 2rem 3.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 80% 50%, rgba(200,146,42,0.12) 0%, transparent 60%);
+    }
+    .page-header-inner { max-width: 820px; margin: 0 auto; position: relative; }
+    .eyebrow { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.3em; color: rgba(245,240,232,0.65); margin-bottom: 1rem; }
+    .page-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .page-header .subtitle { font-size: 1rem; font-style: italic; font-weight: 300; opacity: 0.85; max-width: 580px; }
+ 
+    .content { max-width: 820px; margin: 3.5rem auto; padding: 0 2rem; }
+    .section-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.3em; color: var(--ochre); margin-bottom: 0.8rem; }
+    .content h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      color: var(--navy);
+      margin-bottom: 1.2rem;
+      margin-top: 2.5rem;
+      line-height: 1.3;
+    }
+    .content h2:first-of-type { margin-top: 0; }
+    .content p { margin-bottom: 1.2rem; font-size: 1.02rem; }
+    .rule { border: none; border-top: 2px solid var(--ochre); width: 60px; margin: 2rem 0; }
+    .pull-quote {
+      border-left: 4px solid var(--teal);
+      padding: 1.2rem 1.5rem;
+      margin: 2.5rem 0;
+      background: var(--sand);
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--navy);
+      line-height: 1.5;
+    }
+ 
+    /* COMPARISON TABLE */
+    .compare {
+      margin: 2.5rem 0;
+      border: 1px solid var(--sand);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .compare-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: var(--navy);
+      color: var(--cream);
+    }
+    .compare-header div {
+      padding: 0.8rem 1.2rem;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 400;
+    }
+    .compare-header div:first-child { border-right: 1px solid rgba(255,255,255,0.15); }
+    .compare-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 1px solid var(--sand);
+    }
+    .compare-row:last-child { border-bottom: none; }
+    .compare-row div {
+      padding: 1rem 1.2rem;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    .compare-row div:first-child {
+      border-right: 1px solid var(--sand);
+      background: rgba(200,146,42,0.06);
+    }
+ 
+    .img-block { margin: 2.5rem 0; }
+    .img-block img { width: 100%; max-height: 380px; object-fit: cover; display: block; border-radius: 2px; }
+    .img-caption { font-size: 0.78rem; color: var(--light-text); margin-top: 0.5rem; font-style: italic; }
+    .img-caption a { color: var(--ochre); text-decoration: none; }
+    .img-caption a:hover { text-decoration: underline; }
+ 
+    .highlight-box {
+      background: var(--navy);
+      color: var(--cream);
+      padding: 2rem;
+      margin: 2.5rem 0;
+      border-radius: 2px;
+    }
+    .highlight-box h3 { font-family: 'Playfair Display', serif; margin-bottom: 0.8rem; color: var(--ochre); font-size: 1.1rem; }
+    .highlight-box p { font-size: 0.92rem; opacity: 0.85; margin: 0; }
+ 
+    .page-nav { border-top: 1px solid var(--sand); display: flex; justify-content: space-between; padding: 2rem 0; margin-top: 3rem; }
+    .page-nav a { text-decoration: none; color: var(--navy); font-size: 0.85rem; font-weight: 300; letter-spacing: 0.05em; display: flex; align-items: center; gap: 0.5rem; transition: color 0.2s; }
+    .page-nav a:hover { color: var(--ochre); }
+    .page-nav a.next { margin-left: auto; }
+ 
+    footer { text-align: center; padding: 2.5rem 2rem; background: var(--text); color: rgba(245,240,232,0.5); font-size: 0.78rem; letter-spacing: 0.05em; }
+    footer a { color: var(--ochre); text-decoration: none; }
+  </style>
+</head>
+<body>
+ 
+  <nav>
+    <div class="nav-brand">Le Français en Algérie</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="page2.html">Le Français colonial</a></li>
+      <li><a href="page3.html" class="active">Enjeux contemporains</a></li>
+      <li><a href="page4.html">Migration &amp; Langue</a></li>
+    </ul>
+  </nav>
+ 
+  <header class="page-header">
+    <div class="page-header-inner">
+      <div class="eyebrow">Page 03 · Sujet d'intérêt #2</div>
+      <h1>La position paradoxale du Français aujourd'hui</h1>
+      <p class="subtitle">Le français face à la montée de l'anglais : enjeux politiques, réformes éducatives et mondialisation</p>
+    </div>
+  </header>
+ 
+  <main class="content">
+    <p class="section-label">Contexte actuel</p>
+    <h2>Un statut paradoxal</h2>
+    <hr class="rule" />
+ 
+    <p>Aujourd'hui, le français occupe une position profondément paradoxale en Algérie. Bien qu'hérité de la colonisation, il reste largement utilisé dans de nombreux domaines. Il constitue un outil majeur de communication, de transmission du savoir et de mobilité sociale, ce qui explique sa persistance malgré l'absence de statut officiel.</p>
+ 
+    <p>Cependant, cette position est de plus en plus remise en question. Depuis plusieurs années, les autorités algériennes cherchent à promouvoir l'anglais, perçu comme une langue plus neutre politiquement et mieux adaptée aux exigences de la mondialisation.</p>
+ 
+    <div class="pull-quote">
+      « Le français n'est ni totalement abandonné ni pleinement remplacé. Il continue d'occuper une position centrale, tout en étant de plus en plus en concurrence avec l'anglais. »
+    </div>
+ 
+    <h2>Les réformes éducatives</h2>
+ 
+    <p>Ce changement est particulièrement visible dans le système éducatif. Des réformes récentes ont réduit la place du français, notamment par une diminution du volume horaire dans l'enseignement primaire, passé d'environ quinze à onze heures. Le nombre d'apprenants dans les institutions françaises en Algérie diminue également progressivement.</p>
+ 
+    <div class="img-block">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Alger-Universit%C3%A9_centrale.jpg/1280px-Alger-Universit%C3%A9_centrale.jpg" alt="Université centrale d'Alger" />
+      <p class="img-caption">L'Université d'Alger, fondée en 1879. Historiquement francophone, elle est aujourd'hui au cœur des débats sur la transition vers l'anglais. Source : <a href="https://commons.wikimedia.org/wiki/File:Alger-Universit%C3%A9_centrale.jpg" target="_blank">Wikimedia Commons</a></p>
+    </div>
+ 
+    <p>Parallèlement, l'anglais gagne du terrain. Il est désormais introduit dès le primaire comme deuxième langue étrangère et fait l'objet d'une généralisation progressive à l'université. Depuis la rentrée 2025-2026, les facultés de médecine et de pharmacie sont officiellement engagées dans une transition vers l'enseignement en anglais, marquant une rupture importante avec une tradition universitaire historiquement francophone.</p>
+ 
+    <h2>Français vs. Anglais : une comparaison</h2>
+ 
+    <div class="compare">
+      <div class="compare-header">
+        <div>Français en Algérie</div>
+        <div>Anglais en Algérie</div>
+      </div>
+      <div class="compare-row">
+        <div>Héritage colonial — lien historique fort</div>
+        <div>Perçu comme neutre politiquement</div>
+      </div>
+      <div class="compare-row">
+        <div>Large présence dans la société, les médias, le commerce</div>
+        <div>Présence croissante dans les sciences et l'enseignement supérieur</div>
+      </div>
+      <div class="compare-row">
+        <div>Réduction des heures à l'école primaire</div>
+        <div>Introduction dès le primaire comme 2e langue étrangère</div>
+      </div>
+      <div class="compare-row">
+        <div>Langue de la diaspora franco-algérienne</div>
+        <div>Langue des réseaux scientifiques et économiques mondiaux</div>
+      </div>
+      <div class="compare-row">
+        <div>Associé à l'histoire coloniale douloureuse</div>
+        <div>Associé à la modernité et à l'ouverture internationale</div>
+      </div>
+    </div>
+ 
+    <h2>Des enjeux politiques et symboliques</h2>
+ 
+    <p>Ce changement est également porteur d'enjeux politiques et symboliques. Dans un contexte de tensions diplomatiques entre l'Algérie et la France, la promotion de l'anglais peut être interprétée comme une prise de distance par rapport à l'héritage colonial et aux relations postcoloniales.</p>
+ 
+    <p>Certaines décisions récentes illustrent cette volonté de repositionnement : la réduction de la présence des institutions culturelles françaises, ou encore le passage à l'anglais dans certains services publics, comme les billets d'avion ou les factures. Ces changements ont des implications politiques importantes.</p>
+ 
+    <div class="highlight-box">
+      <h3>À retenir</h3>
+      <p>La coexistence du français et de l'anglais en Algérie reflète les dynamiques changeantes du paysage linguistique, marquées par des tensions entre l'héritage historique, les enjeux politiques et les exigences de la mondialisation. Le remplacement du français par l'anglais reste partiel et progressif — dans la pratique, le français conserve une place importante dans les interactions professionnelles, les médias et la vie quotidienne.</p>
+    </div>
+ 
+    <div class="page-nav">
+      <a href="page2.html">← Le Français colonial</a>
+      <a href="page4.html" class="next">Migration &amp; Langue →</a>
+    </div>
+  </main>
+ 
+  <footer>
+    <p>Histoire de la langue française · Spring 2026 · <a href="index.html">Accueil</a> · <a href="page2.html">Le Français colonial</a> · <a href="page3.html">Enjeux contemporains</a> · <a href="page4.html">Migration &amp; Langue</a></p>
+  </footer>
+ 
+</body>
+</html>
